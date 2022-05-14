@@ -1,6 +1,7 @@
-import React from ".";
+import React , { useState } from "react";
 import UserSearchBox from "./userSearchBox";
 import UserList from "./userList";
+import Modal from "../modal";
 
 const userList = [
     {
@@ -15,6 +16,9 @@ const userList = [
 ]
 
 export default function Users (){
+
+    const [show, setShow] = useState(false);
+
     return(
         <div className='sm:absolute w-full mt-10'>
             <div className='sm:absolute w-full'>
@@ -33,10 +37,20 @@ export default function Users (){
                         <div className="mt-4 sm:mt-0 sm:flex-none">
                             <button
                                 type="button"
+                                onClick={() => setShow(true)}
                                 className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
                             >
                                 کاربر جدید
                             </button>
+
+                            {/*Add modal Component*/}
+                            <Modal
+                                show={show}
+                                setShow={setShow}
+                            >
+                                ahad
+                            </Modal>
+
                         </div>
                     </div>
 
