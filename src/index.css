@@ -2,3 +2,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import "assets/css/fontiran.css";
+
+@layer base {
+    html {
+        font-family: 'IRANSans';
+    }
+    body {
+        direction: rtl;
+        text-align: right;
+        background-color: #f5f7f7;
+    }
+}
