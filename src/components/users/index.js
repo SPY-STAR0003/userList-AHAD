@@ -3,12 +3,21 @@ import UserSearchBox from "./userSearchBox";
 import UserList from "./userList";
 import Modal from "../modal";
 import UserAdd from "../users/userAdd";
+import UserEdit from "./userEdit";
 
 
 export default function Users (){
 
     const [showModal, setShowModal] = useState(false);
+    const [showEditModal, setShowEditModal] = useState(false);
     const [userList, setUserList] = useState([]);
+    const [targetUser, setTargetUser] = useState({});
+
+    const editUserHandler = (key) => {
+        setShowEditModal(true);
+        setTargetUser(userList.find(item => item.key === key));
+        console.log(targetUser.firstName)
+    }
 
     return(
         <div className='sm:absolute w-full mt-10'>
@@ -47,6 +56,21 @@ export default function Users (){
                                 />
                             </Modal>
 
+                            {/*Add Edit modal Component*/}
+                            <Modal
+                                showModal={showEditModal}
+                                setShowModal={setShowEditModal}
+                            >
+                                <UserEdit
+                                    showEditModal={showEditModal}
+                                    setShowEditModal={setShowEditModal}
+                                    UserList={userList}
+                                    setUserList={setUserList}
+                                    setTargetUser={setTargetUser}
+                                    targetUser={targetUser}
+                                />
+                            </Modal>
+
                         </div>
                     </div>
 
@@ -54,7 +78,7 @@ export default function Users (){
                     <UserSearchBox />
 
                     {/*Add User List Component*/}
-                    <UserList userList={userList} setUserList={setUserList} />
+                    <UserList userList={userList} setUserList={setUserList} editUserHandler={editUserHandler} />
 
                 </div>
             </div>

@@ -1,6 +1,6 @@
 import React from "./index";
 
-export default function UserListItem({ user , index , deleteUserHandler }){
+export default function UserListItem({ user , index , deleteUserHandler , editUserHandler }){
     return(
         <tr key={user.key}>
             <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
@@ -15,6 +15,7 @@ export default function UserListItem({ user , index , deleteUserHandler }){
             <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                 <button
                     type="button"
+                    onClick={() => {editUserHandler(user.key)}}
                     className="inline-flex items-center p-1 border border-transparent rounded-full shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 ml-2"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
