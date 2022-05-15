@@ -1,12 +1,11 @@
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from '@headlessui/react'
-import { ExclamationIcon } from '@heroicons/react/outline'
 
-export default function Modal({ show , setShow  , children}){
+export default function Modal({ showModal , setShowModal  , children}){
 
     return(
-        <Transition.Root show={show} as={Fragment}>
-            <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto" onClose={setShow}>
+        <Transition.Root show={showModal} as={Fragment}>
+            <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto" onClose={setShowModal}>
                 <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                     <Transition.Child
                         as={Fragment}
@@ -22,8 +21,8 @@ export default function Modal({ show , setShow  , children}){
 
                     {/* This element is to trick the browser into centering the modal contents. */}
                     <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
-            &#8203;
-          </span>
+                        &#8203;
+                    </span>
                     <Transition.Child
                         as={Fragment}
                         enter="ease-out duration-300"

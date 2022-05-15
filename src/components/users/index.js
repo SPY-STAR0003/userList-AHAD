@@ -2,22 +2,35 @@ import React , { useState } from "react";
 import UserSearchBox from "./userSearchBox";
 import UserList from "./userList";
 import Modal from "../modal";
+import UserAdd from "../users/userAdd";
+import log from "tailwindcss/lib/util/log";
 
-const userList = [
-    {
-        key: Date.now(),
-        firstName: 'Ahad',
-        lastName: 'Lag',
-        gender: 'male',
-        phone: '09122972275',
-        email: 'lindsay.walton@example.com',
-        role: 'admin'
-    },
-]
+// const userList = [
+//     {
+//         key: Date.now(),
+//         firstName: 'Ahad',
+//         lastName: 'Lag',
+//         gender: 'male',
+//         phone: '09122972275',
+//         email: 'lindsay.walton@example.com',
+//         role: 'admin'
+//     },
+// ]
+
+// const [userList, serUserList] = useState({
+//     key : '1',
+//     firstName : '1',
+//     lastName : '1',
+//     gender : '1',
+//     role : '1',
+//     phone : '1',
+//     email : '1'
+// });
 
 export default function Users (){
 
-    const [show, setShow] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [userList, serUserList] = useState([]);
 
     return(
         <div className='sm:absolute w-full mt-10'>
@@ -37,7 +50,7 @@ export default function Users (){
                         <div className="mt-4 sm:mt-0 sm:flex-none">
                             <button
                                 type="button"
-                                onClick={() => setShow(true)}
+                                onClick={() => setShowModal(true)}
                                 className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
                             >
                                 کاربر جدید
@@ -45,10 +58,13 @@ export default function Users (){
 
                             {/*Add modal Component*/}
                             <Modal
-                                show={show}
-                                setShow={setShow}
+                                showModal={showModal}
+                                setShowModal={setShowModal}
                             >
-                                ahad
+                                <UserAdd 
+                                    showModal={showModal}
+                                    setShowModal={setShowModal}
+                                />
                             </Modal>
 
                         </div>
