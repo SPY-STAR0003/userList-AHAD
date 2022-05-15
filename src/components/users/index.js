@@ -54,7 +54,7 @@ export default function Users (){
                     <UserSearchBox />
 
                     {/*Add User List Component*/}
-                    <UserList userList={userList} />
+                    <UserList userList={userList} setUserList={setUserList} />
 
                 </div>
             </div>

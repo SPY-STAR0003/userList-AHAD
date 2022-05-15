@@ -1,7 +1,14 @@
 import React from "./index";
 import UserListItem from "./userListItem";
 
-export default function UserList ({ userList }){
+export default function UserList ({ userList , setUserList }){
+
+    const deleteUserHandler = (key) => {
+        setUserList(prevState => {
+            return userList.filter(item => item.key !== key)
+        });
+    }
+
     return(
         <div className="px-4 sm:px-6 lg:px-8">
             <div className="mt-3 flex flex-col">
@@ -40,7 +47,7 @@ export default function UserList ({ userList }){
                                 <tbody className="divide-y divide-gray-200 bg-white">
                                 {
                                     userList.length
-                                        ? userList.map((user,index) => <UserListItem user={user} index={index} />)
+                                        ? userList.map((user,index) => <UserListItem user={user} index={index} deleteUserHandler={deleteUserHandler} />)
                                         : <p className="my-5 mx-4">موردی برای نمایش وجود ندارد</p>
                                 }
                                 </tbody>
