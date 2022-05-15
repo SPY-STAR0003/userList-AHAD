@@ -9,7 +9,7 @@ export default function UserAdd({ showModal , setShowModal , userList , setUserL
                 </div>
             </div>
 
-            {/* import User Add Forme  */}
+            {/* import User Add Form */}
             <UserAddForm
                 setShowModal={setShowModal}
                 UserList={userList}

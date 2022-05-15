@@ -3,14 +3,14 @@ import React from "./index";
 export default function UserEditForm({ setShowEditModal , userList , setUserList , setTargetUser , targetUser }){
 
     const editUserHandler = (e) => {
-        // e.preventDefault();
-        // setUserList(prevState => {
-        //     return [
-        //         ...prevState,
-        //         user
-        //     ]
-        // })
-        // setShowEditModal(false)
+        e.preventDefault();
+        setUserList(prevState => {
+            return [
+                ...prevState,
+                user
+            ]
+        })
+        setShowEditModal(false)
     }
 
     const changeInput = (e) => {

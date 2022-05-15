@@ -21,6 +21,7 @@ export default function UserAddForm({ setShowModal , userList , setUserList }){
                 user
             ]
         })
+        console.log(user)
         setShowModal(false)
     }
 
@@ -64,6 +65,7 @@ export default function UserAddForm({ setShowModal , userList , setUserList }){
                         onChange={changeInput}
                         className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
+                        <option>...</option>
                         <option>مرد</option>
                         <option>زن</option>
                     </select>
@@ -77,6 +79,7 @@ export default function UserAddForm({ setShowModal , userList , setUserList }){
                         onChange={changeInput}
                         className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
+                        <option>...</option>
                         <option>مهمان</option>
                         <option>کاربر</option>
                         <option>ادمین</option>
