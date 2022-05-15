@@ -3,34 +3,12 @@ import UserSearchBox from "./userSearchBox";
 import UserList from "./userList";
 import Modal from "../modal";
 import UserAdd from "../users/userAdd";
-import log from "tailwindcss/lib/util/log";
 
-// const userList = [
-//     {
-//         key: Date.now(),
-//         firstName: 'Ahad',
-//         lastName: 'Lag',
-//         gender: 'male',
-//         phone: '09122972275',
-//         email: 'lindsay.walton@example.com',
-//         role: 'admin'
-//     },
-// ]
-
-// const [userList, serUserList] = useState({
-//     key : '1',
-//     firstName : '1',
-//     lastName : '1',
-//     gender : '1',
-//     role : '1',
-//     phone : '1',
-//     email : '1'
-// });
 
 export default function Users (){
 
     const [showModal, setShowModal] = useState(false);
-    const [userList, serUserList] = useState([]);
+    const [userList, setUserList] = useState([]);
 
     return(
         <div className='sm:absolute w-full mt-10'>
@@ -64,6 +42,8 @@ export default function Users (){
                                 <UserAdd 
                                     showModal={showModal}
                                     setShowModal={setShowModal}
+                                    UserList={userList}
+                                    setUserList={setUserList}
                                 />
                             </Modal>
 
