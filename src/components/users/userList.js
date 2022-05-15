@@ -39,7 +39,9 @@ export default function UserList ({ userList }){
                                 </thead>
                                 <tbody className="divide-y divide-gray-200 bg-white">
                                 {
-                                    userList.map((user,index) => <UserListItem user={user} index={index} />)
+                                    userList.length
+                                        ? userList.map((user,index) => <UserListItem user={user} index={index} />)
+                                        : <p className="my-5 mx-4">موردی برای نمایش وجود ندارد</p>
                                 }
                                 </tbody>
                             </table>

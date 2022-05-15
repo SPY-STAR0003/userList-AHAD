@@ -1,4 +1,5 @@
 import { useState } from "react";
+import React from "./index";
 
 export default function UserAddForm({ setShowModal , userList , setUserList }){
 
@@ -58,23 +59,28 @@ export default function UserAddForm({ setShowModal , userList , setUserList }){
                     <label htmlFor="last-name" className="block text-sm text-right font-medium text-gray-700">
                         جنسیت
                     </label>
-                    <input
-                        type="text"
+                    <select
                         name="gender"
                         onChange={changeInput}
                         className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    />
+                    >
+                        <option>مرد</option>
+                        <option>زن</option>
+                    </select>
                 </div>
                 <div className="basis-1/2 mr-2">
                     <label htmlFor="last-name" className="block text-sm text-right font-medium text-gray-700">
                         نقش
                     </label>
-                    <input
-                        type="text"
+                    <select
                         name="role"
                         onChange={changeInput}
                         className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    />
+                    >
+                        <option>مهمان</option>
+                        <option>کاربر</option>
+                        <option>ادمین</option>
+                    </select>
                 </div>
             </div>
             <div className="mt-3">
