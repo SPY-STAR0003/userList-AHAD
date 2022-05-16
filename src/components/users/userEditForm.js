@@ -1,24 +1,26 @@
-import React from "./index";
+import React , { useState } from "react";
 
 export default function UserEditForm({ setShowEditModal , userList , setUserList , setTargetUser , targetUser }){
 
     const editUserHandler = (e) => {
         e.preventDefault();
-        setUserList(prevState => {
-            return [
-                ...prevState,
-                user
-            ]
-        })
-        setShowEditModal(false)
+        
+        // setUserList(prevState => {
+        //     return [
+        //         ...prevState,
+        //         user
+        //     ]
+        // })
+        // setShowEditModal(false)
     }
 
     const changeInput = (e) => {
-        // setUser({
-        //     ...user,
-        //     [e.target.name] : e.target.value
-        // })
+        setTargetUser({
+            ...targetUser,
+            [e.target.name] : e.target.value
+        })
     }
+
     return(
         <form onSubmit={editUserHandler}>
             <div className="mt-3">
