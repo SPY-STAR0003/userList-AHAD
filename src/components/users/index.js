@@ -13,10 +13,9 @@ export default function Users (){
     const [userList, setUserList] = useState([]);
     const [targetUser, setTargetUser] = useState({});
 
-    const editUserHandler = (key) => {
+    const getaTargetUserHandler = (key) => {
         setShowEditModal(true);
         setTargetUser(userList.find(item => item.key === key));
-        console.log(targetUser.firstName)
     }
 
     return(
@@ -64,7 +63,7 @@ export default function Users (){
                                 <UserEdit
                                     showEditModal={showEditModal}
                                     setShowEditModal={setShowEditModal}
-                                    UserList={userList}
+                                    userList={userList}
                                     setUserList={setUserList}
                                     setTargetUser={setTargetUser}
                                     targetUser={targetUser}
@@ -78,7 +77,7 @@ export default function Users (){
                     <UserSearchBox />
 
                     {/*Add User List Component*/}
-                    <UserList userList={userList} setUserList={setUserList} editUserHandler={editUserHandler} />
+                    <UserList userList={userList} setUserList={setUserList} getaTargetUserHandler={getaTargetUserHandler} />
 
                 </div>
             </div>

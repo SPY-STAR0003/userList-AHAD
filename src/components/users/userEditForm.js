@@ -1,17 +1,18 @@
-import React , { useState } from "react";
+import React from "react";
 
 export default function UserEditForm({ setShowEditModal , userList , setUserList , setTargetUser , targetUser }){
 
     const editUserHandler = (e) => {
         e.preventDefault();
-        
-        // setUserList(prevState => {
-        //     return [
-        //         ...prevState,
-        //         user
-        //     ]
-        // })
-        // setShowEditModal(false)
+        let item = userList.find(item => item.key === targetUser.key);
+        setUserList(prevState => {
+            let newList = prevState.filter(item => item.key !== targetUser.key)
+            return [
+                ...newList,
+                targetUser
+            ]
+        })
+        setShowEditModal(false)
     }
 
     const changeInput = (e) => {

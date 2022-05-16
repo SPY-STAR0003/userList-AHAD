@@ -1,7 +1,7 @@
 import React from "./index";
 import UserListItem from "./userListItem";
 
-export default function UserList ({ userList , setUserList , editUserHandler }){
+export default function UserList ({ userList , setUserList , getaTargetUserHandler }){
 
     const deleteUserHandler = (key) => {
         setUserList(prevState => {
@@ -51,7 +51,7 @@ export default function UserList ({ userList , setUserList , editUserHandler }){
                                             user={user}
                                             index={index}
                                             deleteUserHandler={deleteUserHandler}
-                                            editUserHandler={editUserHandler}
+                                            getaTargetUserHandler={getaTargetUserHandler}
                                         />)
                                         : <p className="my-5 mx-4">موردی برای نمایش وجود ندارد</p>
                                 }
