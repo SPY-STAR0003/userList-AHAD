@@ -4,7 +4,6 @@ export default function UserEditForm({ setShowEditModal , userList , setUserList
 
     const editUserHandler = (e) => {
         e.preventDefault();
-        let item = userList.find(item => item.key === targetUser.key);
         setUserList(prevState => {
             let newList = prevState.filter(item => item.key !== targetUser.key)
             return [
