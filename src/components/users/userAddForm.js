@@ -3,6 +3,7 @@ import React from "./index";
 
 export default function UserAddForm({ setShowModal , userList , setUserList }){
 
+    // create states
     const [user, setUser] = useState({
         key : Date.now().toString(),
         firstName : '',
@@ -13,6 +14,7 @@ export default function UserAddForm({ setShowModal , userList , setUserList }){
         email : ''
     });
 
+    // create handlers
     const addUserHandler = (e) => {
         e.preventDefault();
         setUserList(prevState => {
@@ -25,6 +27,7 @@ export default function UserAddForm({ setShowModal , userList , setUserList }){
         setShowModal(false)
     }
 
+    // create chenge input in add user form
     const changeInput = (e) => {
         setUser({
             ...user,

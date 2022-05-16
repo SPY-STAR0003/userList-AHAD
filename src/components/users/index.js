@@ -7,7 +7,7 @@ import UserEdit from "./userEdit";
 
 
 export default function Users (){
-
+    // create states
     const [showModal, setShowModal] = useState(false);
     const [showEditModal, setShowEditModal] = useState(false);
     const [userList, setUserList] = useState([]);
@@ -17,13 +17,15 @@ export default function Users (){
         gender : '',
         role : ''
     });
+
+    // create variable
     let finalUserList = userList;
 
+    //create handler
     const getaTargetUserHandler = (key) => {
         setShowEditModal(true);
         setTargetUser(userList.find(item => item.key === key));
     }
-
     const searchBoxChengeHandler = (e) => {
         setSearch({
             ...search,
@@ -31,6 +33,7 @@ export default function Users (){
         })
     }
 
+    //for search box
     if(finalUserList.length){
         if(search.search.length){
             finalUserList = finalUserList.filter(item => (
@@ -77,6 +80,7 @@ export default function Users (){
                                 showModal={showModal}
                                 setShowModal={setShowModal}
                             >
+                                {/*send user add form in modal*/}
                                 <UserAdd 
                                     showModal={showModal}
                                     setShowModal={setShowModal}
@@ -90,6 +94,7 @@ export default function Users (){
                                 showModal={showEditModal}
                                 setShowModal={setShowEditModal}
                             >
+                                {/*send user edit form in modal*/}
                                 <UserEdit
                                     showEditModal={showEditModal}
                                     setShowEditModal={setShowEditModal}

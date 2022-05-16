@@ -3,6 +3,7 @@ import UserListItem from "./userListItem";
 
 export default function UserList ({ finalUserList , setUserList , getaTargetUserHandler }){
 
+    // create handler
     const deleteUserHandler = (key) => {
         setUserList(prevState => {
             return finalUserList.filter(item => item.key !== key)
@@ -46,6 +47,7 @@ export default function UserList ({ finalUserList , setUserList , getaTargetUser
                                 </thead>
                                 <tbody className="divide-y divide-gray-200 bg-white">
                                 {
+                                    // check condition user list
                                     finalUserList.length
                                         ? finalUserList.map((user,index) => <UserListItem
                                             user={user}

@@ -5,6 +5,7 @@ import Users from './components/users/index';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  // import user index page
   <React.StrictMode>
     <Users />
   </React.StrictMode>

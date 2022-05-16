@@ -2,6 +2,7 @@ import React from "react";
 
 export default function UserEditForm({ setShowEditModal , userList , setUserList , setTargetUser , targetUser }){
 
+    // create handlers
     const editUserHandler = (e) => {
         e.preventDefault();
         setUserList(prevState => {
@@ -14,6 +15,7 @@ export default function UserEditForm({ setShowEditModal , userList , setUserList
         setShowEditModal(false)
     }
 
+    // create chenge input in edit form user
     const changeInput = (e) => {
         setTargetUser({
             ...targetUser,
