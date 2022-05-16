@@ -25,7 +25,7 @@ export default function UserListItem({ user , index , deleteUserHandler , getaTa
                 </button>
                 <button
                     type="button"
-                    onClick={() => {getaTargetUserHandler(user.key)}}
+                    onClick={() => {deleteUserHandler(user.key)}}
                     className="inline-flex items-center p-1 border border-transparent rounded-full shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
