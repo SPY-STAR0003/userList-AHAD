@@ -12,10 +12,40 @@ export default function Users (){
     const [showEditModal, setShowEditModal] = useState(false);
     const [userList, setUserList] = useState([]);
     const [targetUser, setTargetUser] = useState({});
+    const [search, setSearch] = useState({
+        search : '',
+        gender : '',
+        role : ''
+    });
+    let finalUserList = userList;
 
     const getaTargetUserHandler = (key) => {
         setShowEditModal(true);
         setTargetUser(userList.find(item => item.key === key));
+    }
+
+    const searchBoxChengeHandler = (e) => {
+        setSearch({
+            ...search,
+            [e.target.name] : e.target.value
+        })
+    }
+
+    if(finalUserList.length){
+        if(search.search.length){
+            finalUserList = finalUserList.filter(item => (
+                item.firstName.search(search.search) != -1 ||
+                item.lastName.search(search.search) != -1 ||
+                item.phone.search(search.search) != -1 ||
+                item.email.search(search.search) != -1
+            ));
+        }
+        if(search.role && search.role != "all"){
+            finalUserList = finalUserList.filter(item => item.role == search.role);
+        }
+        if(search.gender && search.gender != "all"){
+            finalUserList = finalUserList.filter(item => item.gender == search.gender);
+        }
     }
 
     return(
@@ -74,10 +104,10 @@ export default function Users (){
                     </div>
 
                     {/*Add User Search Box Component*/}
-                    <UserSearchBox />
+                    <UserSearchBox searchBoxChengeHandler={searchBoxChengeHandler} />
 
                     {/*Add User List Component*/}
-                    <UserList userList={userList} setUserList={setUserList} getaTargetUserHandler={getaTargetUserHandler} />
+                    <UserList finalUserList={finalUserList} setUserList={setUserList} getaTargetUserHandler={getaTargetUserHandler} />
 
                 </div>
             </div>

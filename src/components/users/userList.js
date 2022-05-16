@@ -1,11 +1,11 @@
 import React from "./index";
 import UserListItem from "./userListItem";
 
-export default function UserList ({ userList , setUserList , getaTargetUserHandler }){
+export default function UserList ({ finalUserList , setUserList , getaTargetUserHandler }){
 
     const deleteUserHandler = (key) => {
         setUserList(prevState => {
-            return userList.filter(item => item.key !== key)
+            return finalUserList.filter(item => item.key !== key)
         });
     }
 
@@ -46,8 +46,8 @@ export default function UserList ({ userList , setUserList , getaTargetUserHandl
                                 </thead>
                                 <tbody className="divide-y divide-gray-200 bg-white">
                                 {
-                                    userList.length
-                                        ? userList.map((user,index) => <UserListItem
+                                    finalUserList.length
+                                        ? finalUserList.map((user,index) => <UserListItem
                                             user={user}
                                             index={index}
                                             deleteUserHandler={deleteUserHandler}
