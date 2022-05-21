@@ -9,9 +9,6 @@ import UserEdit from "./userEdit";
 import UserListContext from './../../contexts/userListContext'
 import ModalContext from './../../contexts/modalContext'
 
-// import Reduces
-// import AppReducer from "./reducers/appReducer";
-
 export default function Users (){
     // create states
     const [showModal, setShowModal] = useState(false);
@@ -50,17 +47,17 @@ export default function Users (){
     if(finalUserList.length){
         if(search.search.length){
             finalUserList = finalUserList.filter(item => (
-                item.firstName.search(search.search) != -1 ||
-                item.lastName.search(search.search) != -1 ||
-                item.phone.search(search.search) != -1 ||
-                item.email.search(search.search) != -1
+                item.firstName.search(search.search) !== -1 ||
+                item.lastName.search(search.search) !== -1 ||
+                item.phone.search(search.search) !== -1 ||
+                item.email.search(search.search) !== -1
             ));
         }
-        if(search.role && search.role != "all"){
-            finalUserList = finalUserList.filter(item => item.role == search.role);
+        if(search.role && search.role !== "all"){
+            finalUserList = finalUserList.filter(item => item.role === search.role);
         }
-        if(search.gender && search.gender != "all"){
-            finalUserList = finalUserList.filter(item => item.gender == search.gender);
+        if(search.gender && search.gender !== "all"){
+            finalUserList = finalUserList.filter(item => item.gender === search.gender);
         }
     }
 
