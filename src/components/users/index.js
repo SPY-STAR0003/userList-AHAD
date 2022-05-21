@@ -60,11 +60,15 @@ export default function Users (){
     return(
         <ModalContext.Provider value={{
             showModal,
-            setShowModal
+            setShowModal,
+            showEditModal,
+            setShowEditModal
         }}>
             <UserListContext.Provider value={{
                 userList,
-                setUserList
+                setUserList,
+                targetUser,
+                setTargetUser
             }}>
                 <div className='sm:absolute w-full mt-10'>
                     <div className='sm:absolute w-full'>

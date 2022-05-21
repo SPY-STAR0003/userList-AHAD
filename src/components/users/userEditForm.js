@@ -1,6 +1,11 @@
-import React from "react";
+import React,{ useContext } from "react";
+import ModalContext from "../../contexts/modalContext";
+import UserListContext from "../../contexts/userListContext";
 
-export default function UserEditForm({ setShowEditModal , userList , setUserList , setTargetUser , targetUser }){
+export default function UserEditForm(){
+
+    let { setUserList , setTargetUser , targetUser } = useContext(UserListContext)
+    let { setShowEditModal } = useContext(ModalContext)
 
     // create handlers
     const editUserHandler = (e) => {
