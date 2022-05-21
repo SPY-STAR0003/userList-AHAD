@@ -1,14 +1,7 @@
 import React from "./index";
 import UserListItem from "./userListItem";
 
-export default function UserList ({ finalUserList , setUserList , getaTargetUserHandler }){
-
-    // create handler
-    const deleteUserHandler = (key) => {
-        setUserList(prevState => {
-            return finalUserList.filter(item => item.key !== key)
-        });
-    }
+export default function UserList ({ finalUserList, getTargetUserHandler , deleteUserHandler }){
 
     return(
         <div className="px-4 sm:px-6 lg:px-8">
@@ -53,7 +46,7 @@ export default function UserList ({ finalUserList , setUserList , getaTargetUser
                                             user={user}
                                             index={index}
                                             deleteUserHandler={deleteUserHandler}
-                                            getaTargetUserHandler={getaTargetUserHandler}
+                                            getTargetUserHandler={getTargetUserHandler}
                                         />)
                                         : <p className="my-5 mx-4">موردی برای نمایش وجود ندارد</p>
                                 }

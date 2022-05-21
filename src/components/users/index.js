@@ -28,10 +28,17 @@ export default function Users (){
     let finalUserList = userList;
 
     //create handler
-    const getaTargetUserHandler = (key) => {
+    const getTargetUserHandler = (key) => {
         setShowEditModal(true);
         setTargetUser(userList.find(item => item.key === key));
     }
+
+    const deleteUserHandler = (key) => {
+        setUserList(prevState => {
+            return finalUserList.filter(item => item.key !== key)
+        });
+    }
+
     const searchBoxChengeHandler = (e) => {
         setSearch({
             ...search,
@@ -108,14 +115,7 @@ export default function Users (){
                                         setShowModal={setShowEditModal}
                                     >
                                         {/*send user edit form in modal*/}
-                                        <UserEdit
-                                            showEditModal={showEditModal}
-                                            setShowEditModal={setShowEditModal}
-                                            userList={userList}
-                                            setUserList={setUserList}
-                                            setTargetUser={setTargetUser}
-                                            targetUser={targetUser}
-                                        />
+                                        <UserEdit />
                                     </Modal>
 
                                 </div>
@@ -125,7 +125,7 @@ export default function Users (){
                             <UserSearchBox searchBoxChengeHandler={searchBoxChengeHandler} />
 
                             {/*Add User List Component*/}
-                            <UserList finalUserList={finalUserList} setUserList={setUserList} getaTargetUserHandler={getaTargetUserHandler} />
+                            <UserList finalUserList={finalUserList} setUserList={setUserList} getTargetUserHandler={getTargetUserHandler} deleteUserHandler={deleteUserHandler} />
 
                         </div>
                     </div>
