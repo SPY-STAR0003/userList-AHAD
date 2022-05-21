@@ -6,7 +6,7 @@ import UserAdd from "../users/userAdd";
 import UserEdit from "./userEdit";
 
 // import Contexts
-import UserListContext from './contexts/userListContext'
+import UserListContext from './../../contexts/userListContext'
 
 // import Reduces
 // import AppReducer from "./reducers/appReducer";
@@ -57,7 +57,12 @@ export default function Users (){
     }
 
     return(
-        <UserListContext.Provider value={null}>
+        <UserListContext.Provider value={{
+            userList,
+            setUserList,
+            showModal,
+            setShowModal
+        }}>
             <div className='sm:absolute w-full mt-10'>
                 <div className='sm:absolute w-full'>
                     <div className='sm:w-2/5 reletive mx-auto text-center p-9 sm:px-14 sm:py-3 sm:bg-[#f5f7f7] bg-slate-400 border-4 border-violet-400 rounded-lg md:rounded-xl lg:rounded-2xl shadow-[0_4px_80px_0px_rgba(0,0,0,0.05)]'>
@@ -87,12 +92,7 @@ export default function Users (){
                                     setShowModal={setShowModal}
                                 >
                                     {/*send user add form in modal*/}
-                                    <UserAdd
-                                        showModal={showModal}
-                                        setShowModal={setShowModal}
-                                        UserList={userList}
-                                        setUserList={setUserList}
-                                    />
+                                    <UserAdd />
                                 </Modal>
 
                                 {/*Add Edit modal Component*/}

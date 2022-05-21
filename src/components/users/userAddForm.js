@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import React from "./index";
+import UserListContext from "../../contexts/userListContext";
 
-export default function UserAddForm({ setShowModal , userList , setUserList }){
+export default function UserAddForm(){
+
+    let { setUserList, setShowModal } = useContext(UserListContext);
 
     // create states
     const [user, setUser] = useState({
