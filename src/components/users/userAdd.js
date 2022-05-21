@@ -12,7 +12,6 @@ export default function UserAdd(){
 
             {/* import User Add Form */}
             <UserAddForm />
-
         </>
     )
 }
