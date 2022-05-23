@@ -1,6 +1,6 @@
 
 export default function Authenticate(){
     return(
-        nall
+        <div>Authenticate</div>
     )
 }
