@@ -4,6 +4,8 @@ import UserList from "./../../components/users/userList";
 import Modal from "./../../components/modal";
 import UserAdd from "./../../components/users/userAdd";
 import UserEdit from "./../../components/users/userEdit";
+import LoadingModal from "./../../components/loading";
+
 
 // import Contexts
 import UserListContext from './../../contexts/userListContext'
@@ -12,6 +14,7 @@ import ModalContext from './../../contexts/modalContext'
 export default function Users (){
     // create states
     const [showModal, setShowModal] = useState(false);
+    const [showLoading, setShowLoading] = useState(true);
     const [showEditModal, setShowEditModal] = useState(false);
     const [userList, setUserList] = useState([]);
     const [targetUser, setTargetUser] = useState({});
@@ -96,6 +99,11 @@ export default function Users (){
                                     >
                                         کاربر جدید
                                     </button>
+
+                                    <LoadingModal
+                                        showLoading={showLoading}
+                                        setShowLoading={setShowLoading}
+                                    />
 
                                     {/*Add modal Component*/}
                                     <Modal
