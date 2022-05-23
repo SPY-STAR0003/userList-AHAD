@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import React from "./index";
+import React from "./../../routers/users/index";
 import UserListContext from "../../contexts/userListContext";
 import ModalContext from "../../contexts/modalContext";
 

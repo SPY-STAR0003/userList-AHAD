@@ -1,4 +1,4 @@
-import React from "./index";
+import React from "./../../routers/users/index";
 import UserListItem from "./userListItem";
 
 export default function UserList ({ finalUserList, getTargetUserHandler , deleteUserHandler }){
