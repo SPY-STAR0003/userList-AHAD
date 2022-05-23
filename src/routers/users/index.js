@@ -14,7 +14,7 @@ import ModalContext from './../../contexts/modalContext'
 export default function Users (){
     // create states
     const [showModal, setShowModal] = useState(false);
-    const [showLoading, setShowLoading] = useState(true);
+    const [showLoading, setShowLoading] = useState(false);
     const [showEditModal, setShowEditModal] = useState(false);
     const [userList, setUserList] = useState([]);
     const [targetUser, setTargetUser] = useState({});
@@ -77,6 +77,13 @@ export default function Users (){
                 targetUser,
                 setTargetUser
             }}>
+
+                {/*Add loading Component*/}
+                <LoadingModal
+                    showLoading={showLoading}
+                    setShowLoading={setShowLoading}
+                />
+
                 <div className='sm:absolute w-full mt-10'>
                     <div className='sm:absolute w-full'>
                         <div className='sm:w-2/5 reletive mx-auto text-center p-9 sm:px-14 sm:py-3 sm:bg-[#f5f7f7] bg-slate-400 border-4 border-violet-400 rounded-lg md:rounded-xl lg:rounded-2xl shadow-[0_4px_80px_0px_rgba(0,0,0,0.05)]'>
@@ -99,11 +106,6 @@ export default function Users (){
                                     >
                                         کاربر جدید
                                     </button>
-
-                                    <LoadingModal
-                                        showLoading={showLoading}
-                                        setShowLoading={setShowLoading}
-                                    />
 
                                     {/*Add modal Component*/}
                                     <Modal
