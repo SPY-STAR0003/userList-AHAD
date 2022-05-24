@@ -1,3 +1,4 @@
+import {Outlet, useNavigate, useLocation } from "react-router-dom"
 import React , { useEffect, useState } from "react";
 import UserSearchBox from "./../../components/users/userSearchBox";
 import UserList from "./../../components/users/userList";
@@ -11,6 +12,19 @@ import LoadingModal from "./../../components/loading";
 import UserListContext from './../../contexts/userListContext'
 import ModalContext from './../../contexts/modalContext'
 import axios from "axios";
+
+// // check authenticate
+// let redirectHandler = () => {
+//     if(location.pathname === '/auth'){
+//         {
+//             navigate('/auth/login', { replace: true })
+//         }
+//     }
+// }
+
+// useEffect(
+//     redirectHandler
+//     ,[])
 
 export default function Users (){
     // create states

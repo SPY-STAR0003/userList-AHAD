@@ -1,5 +1,5 @@
 import {Outlet, useNavigate, useLocation } from "react-router-dom"
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 
 export default function Authenticate(){
 
@@ -7,12 +7,9 @@ export default function Authenticate(){
     const navigate = useNavigate();
     const location = useLocation();
 
-    // create state
-    const [ redirect , setRedirect ] = useState(true);
-
     // for redirect
     let redirectHandler = () => {
-        if(location.pathname === '/auth'){
+        if(location.pathname === '/auth' || location.pathname === '/auth/'){
             {
                 navigate('/auth/login', { replace: true })
             }

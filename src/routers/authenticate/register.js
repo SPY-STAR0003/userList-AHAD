@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 
 export default function Register(){
     return(
@@ -43,9 +44,9 @@ export default function Register(){
 
                     <div className="flex items-center justify-between">
                         <div className="text-sm">
-                        <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+                        <NavLink to="/auth/login" className="font-medium text-indigo-600 hover:text-indigo-500">
                             قبلا عضو شدم, میخوام وارد شم
-                        </a>
+                        </NavLink>
                         </div>
                     </div>
 
