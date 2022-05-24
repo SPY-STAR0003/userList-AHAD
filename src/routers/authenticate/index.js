@@ -12,7 +12,7 @@ export default function Authenticate(){
 
     // for redirect
     let redirectHandler = () => {
-        if(location.pathname === '/auth/'){
+        if(location.pathname === '/auth'){
             {
                 navigate('/auth/login', { replace: true })
             }
