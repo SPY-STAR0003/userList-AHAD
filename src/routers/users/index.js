@@ -7,25 +7,10 @@ import UserAdd from "./../../components/users/userAdd";
 import UserEdit from "./../../components/users/userEdit";
 import LoadingModal from "./../../components/loading";
 
-
 // import Contexts
 import UserListContext from './../../contexts/userListContext'
 import ModalContext from './../../contexts/modalContext'
 import axios from "axios";
-
-// check authenticate
-console.log(sessionStorage.getItem("authApp"))
-// let redirectHandler = () => {
-//     if(location.pathname === '/auth'){
-//         {
-//             navigate('/auth/login', { replace: true })
-//         }
-//     }
-// }
-
-// useEffect(
-//     redirectHandler
-//     ,[])
 
 export default function Users (){
     // create states
@@ -40,9 +25,27 @@ export default function Users (){
         role : ''
     });
 
+    // create navigate
+    const navigate = useNavigate(); 
+
+    // check authenticate
+    console.log(sessionStorage.getItem("authApp"))
+    let redirectHandler = () => {
+        if(sessionStorage.getItem("authApp") !== 'true'){
+            {
+                navigate('/auth/login', { replace: true })
+            }
+        }
+    }
+
+    useEffect(
+        redirectHandler
+        ,[])
+
     useEffect(() => {
         fetchAllUserHandler()
     },[]);
+    
 
     // fetch data from api
     let fetchAllUserHandler = async () => {

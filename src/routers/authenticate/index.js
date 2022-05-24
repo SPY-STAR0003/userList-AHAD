@@ -14,6 +14,11 @@ export default function Authenticate(){
                 navigate('/auth/login', { replace: true })
             }
         }
+        if(sessionStorage.getItem("authApp") === 'true'){
+            {
+                navigate('/', { replace: true })
+            }
+        }
     }
 
     useEffect(
