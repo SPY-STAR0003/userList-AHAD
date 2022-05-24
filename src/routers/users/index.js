@@ -1,4 +1,4 @@
-import React , { useState } from "react";
+import React , { useEffect, useState } from "react";
 import UserSearchBox from "./../../components/users/userSearchBox";
 import UserList from "./../../components/users/userList";
 import Modal from "./../../components/modal";
@@ -10,6 +10,7 @@ import LoadingModal from "./../../components/loading";
 // import Contexts
 import UserListContext from './../../contexts/userListContext'
 import ModalContext from './../../contexts/modalContext'
+import axios from "axios";
 
 export default function Users (){
     // create states
@@ -23,6 +24,20 @@ export default function Users (){
         gender : '',
         role : ''
     });
+
+    useEffect(() => {
+        fetchAllUserHandler()
+    },[]);
+
+    // handler for api
+    let fetchAllUserHandler = async () => {
+        setShowLoading(true)
+        let apiResult = await axios.get('https://6285fb066b6c317d5ba78756.endapi.io/users');
+        setUserList(apiResult?.data?.data)
+        setShowLoading(false)
+    };
+
+    
 
     // create variable
     let finalUserList = userList;
