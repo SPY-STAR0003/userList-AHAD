@@ -13,7 +13,8 @@ import UserListContext from './../../contexts/userListContext'
 import ModalContext from './../../contexts/modalContext'
 import axios from "axios";
 
-// // check authenticate
+// check authenticate
+console.log(sessionStorage.getItem("authApp"))
 // let redirectHandler = () => {
 //     if(location.pathname === '/auth'){
 //         {
