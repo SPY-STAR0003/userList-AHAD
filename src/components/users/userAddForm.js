@@ -6,8 +6,7 @@ import axios from "axios";
 
 export default function UserAddForm(){
 
-    let { setShowLoading } = useContext(ModalContext);
-    let { setShowModal } = useContext(ModalContext);
+    let { setShowLoading , setShowModal } = useContext(ModalContext);
     let { fetchAllUserHandler } = useContext(UserListContext);
 
     // create states
@@ -25,7 +24,7 @@ export default function UserAddForm(){
         e.preventDefault();
         setShowLoading(true)
         let res = await axios.post('https://6285fb066b6c317d5ba78756.endapi.io/users',{
-            'firstName':user.firstName,
+            firstName:user.firstName,
             lastName:user.lastName,
             gender:user.gender,
             role:user.role,

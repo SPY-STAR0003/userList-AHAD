@@ -1,23 +1,27 @@
+import axios from "axios";
 import React,{ useContext } from "react";
 import ModalContext from "../../contexts/modalContext";
 import UserListContext from "../../contexts/userListContext";
 
 export default function UserEditForm(){
 
-    let { setUserList , setTargetUser , targetUser } = useContext(UserListContext)
-    let { setShowEditModal } = useContext(ModalContext)
+    let { setUserList , setTargetUser , targetUser , fetchAllUserHandler } = useContext(UserListContext)
+    let { setShowEditModal , setShowLoading } = useContext(ModalContext)
 
     // create handlers
-    const editUserHandler = (e) => {
+    const editUserHandler = async (e) => {
         e.preventDefault();
-        setUserList(prevState => {
-            let newList = prevState.filter(item => item.key !== targetUser.key)
-            return [
-                ...newList,
-                targetUser
-            ]
-        })
+        let res = await axios.put(`https://6285fb066b6c317d5ba78756.endapi.io/users/${targetUser.id}`,{
+            firstName:targetUser.firstName,
+            lastName:targetUser.lastName,
+            gender:targetUser.gender,
+            role:targetUser.role,
+            phone:targetUser.phone,
+            email:targetUser.email,
+            password:'123456789'
+        });
         setShowEditModal(false)
+        fetchAllUserHandler()
     }
 
     // create chenge input in edit form user

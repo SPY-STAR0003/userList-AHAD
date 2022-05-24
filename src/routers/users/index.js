@@ -42,9 +42,9 @@ export default function Users (){
     let finalUserList = userList;
 
     //create handler
-    const getTargetUserHandler = (key) => {
+    const getTargetUserHandler = (id) => {
+        setTargetUser(userList.find(item => item.id === id));
         setShowEditModal(true);
-        setTargetUser(userList.find(item => item.key === key));
     }
 
     const deleteUserHandler = async (id) => {
