@@ -15,7 +15,7 @@ import axios from "axios";
 export default function Users (){
     // create states
     const [showModal, setShowModal] = useState(false);
-    const [showLoading, setShowLoading] = useState(false);
+    const [showLoading, setShowLoading] = useState(true);
     const [showEditModal, setShowEditModal] = useState(false);
     const [userList, setUserList] = useState([]);
     const [targetUser, setTargetUser] = useState({});
@@ -29,9 +29,8 @@ export default function Users (){
         fetchAllUserHandler()
     },[]);
 
-    // handler for api
+    // fetch data from api
     let fetchAllUserHandler = async () => {
-        setShowLoading(true)
         let apiResult = await axios.get('https://6285fb066b6c317d5ba78756.endapi.io/users');
         setUserList(apiResult?.data?.data)
         setShowLoading(false)
@@ -48,10 +47,10 @@ export default function Users (){
         setTargetUser(userList.find(item => item.key === key));
     }
 
-    const deleteUserHandler = (key) => {
-        setUserList(prevState => {
-            return finalUserList.filter(item => item.key !== key)
-        });
+    const deleteUserHandler = async (id) => {
+        setShowLoading(true)
+        let res = await axios.delete(`https://6285fb066b6c317d5ba78756.endapi.io/users/${id}`);
+        fetchAllUserHandler()
     }
 
     const searchBoxChengeHandler = (e) => {
@@ -84,13 +83,15 @@ export default function Users (){
             showModal,
             setShowModal,
             showEditModal,
-            setShowEditModal
+            setShowEditModal,
+            setShowLoading
         }}>
             <UserListContext.Provider value={{
                 userList,
                 setUserList,
                 targetUser,
-                setTargetUser
+                setTargetUser,
+                fetchAllUserHandler
             }}>
 
                 {/*Add loading Component*/}

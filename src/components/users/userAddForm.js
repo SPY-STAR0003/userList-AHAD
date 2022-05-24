@@ -2,15 +2,16 @@ import { useState, useContext } from "react";
 import React from "./../../routers/users/index";
 import UserListContext from "../../contexts/userListContext";
 import ModalContext from "../../contexts/modalContext";
+import axios from "axios";
 
 export default function UserAddForm(){
 
-    let { setUserList } = useContext(UserListContext);
+    let { setShowLoading } = useContext(ModalContext);
     let { setShowModal } = useContext(ModalContext);
+    let { fetchAllUserHandler } = useContext(UserListContext);
 
     // create states
     const [user, setUser] = useState({
-        key : Date.now().toString(),
         firstName : '',
         lastName : '',
         gender : '',
@@ -20,15 +21,19 @@ export default function UserAddForm(){
     });
 
     // create handlers
-    const addUserHandler = (e) => {
+    const addUserHandler = async (e) => {
         e.preventDefault();
-        setUserList(prevState => {
-            return [
-                ...prevState,
-                user
-            ]
-        })
-        console.log(user)
+        setShowLoading(true)
+        let res = await axios.post('https://6285fb066b6c317d5ba78756.endapi.io/users',{
+            'firstName':user.firstName,
+            lastName:user.lastName,
+            gender:user.gender,
+            role:user.role,
+            phone:user.phone,
+            email:user.email,
+            password:'123456789'
+        });
+        fetchAllUserHandler()
         setShowModal(false)
     }
 
