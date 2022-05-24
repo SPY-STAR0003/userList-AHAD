@@ -123,6 +123,7 @@ export default function UserAddForm(){
             <hr className="my-4"/>
             <div className='sm:w-full flex justify-between mx-auto px-2 mt-3'>
                 <button
+                    type="button"
                     className="inline-flex items-center justify-center rounded-md border border-transparent bg-red-600 hover:bg-red-700 px-4 py-2 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:w-auto"
                     onClick={() => { setShowModal(false) }}
                 >
