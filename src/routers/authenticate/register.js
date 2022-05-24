@@ -1,6 +1,46 @@
-import { NavLink } from "react-router-dom";
+import { NavLink , useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 
 export default function Register(){
+
+    // create navigate
+    const navigate = useNavigate();
+
+    // create states
+    const [user, setUser] = useState({
+        firstName : '',
+        lastName : '',
+        gender : '',
+        role : 'مهمان',
+        phone : '',
+        email : ''
+    });
+
+    // create handlers
+    const addUserHandler = async (e) => {
+        e.preventDefault();
+        let res = await axios.post('https://6285fb066b6c317d5ba78756.endapi.io/users',{
+            firstName:user.firstName,
+            lastName:user.lastName,
+            gender:user.gender,
+            role:user.role,
+            phone:user.phone,
+            email:user.email,
+            password:'123456789'
+        });
+        sessionStorage.setItem("authApp", 'true');
+        navigate('/');
+    }
+
+    // create chenge input in add user form
+    const changeInput = (e) => {
+        setUser({
+            ...user,
+            [e.target.name] : e.target.value
+        })
+    }
+
     return(
         <>
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -8,47 +48,76 @@ export default function Register(){
             </div>
 
             <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-                <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-                    <form className="space-y-6" action="#" method="POST">
-                    <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                        ایمیل
+                <div className="bg-white py-4 px-4 shadow sm:rounded-lg sm:px-10">
+                    <form onSubmit={addUserHandler}>
+                    <div className="mt-3">
+                        <label htmlFor="last-name" className="block text-sm text-right font-medium text-gray-700">
+                            نام
                         </label>
-                        <div className="mt-1">
                         <input
-                            id="email"
-                            name="email"
+                            required
+                            type="text"
+                            name="firstName"
+                            onChange={changeInput}
+                            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        />
+                    </div>
+                    <div className="mt-3">
+                        <label htmlFor="last-name" className="block text-sm text-right font-medium text-gray-700">
+                            نام خانوادگی
+                        </label>
+                        <input
+                            required
+                            type="text"
+                            name="lastName"
+                            onChange={changeInput}
+                            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        />
+                    </div>
+                    <div className="mt-3">
+                        <label htmlFor="last-name" className="block text-sm text-right font-medium text-gray-700">
+                            جنسیت
+                        </label>
+                        <select
+                            required
+                            name="gender"
+                            onChange={changeInput}
+                            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        >
+                            <option>...</option>
+                            <option>مرد</option>
+                            <option>زن</option>
+                        </select>
+                    </div>
+                    <div className="mt-3">
+                        <label htmlFor="last-name" className="block text-sm text-right font-medium text-gray-700">
+                            شماره
+                        </label>
+                        <input
+                            required
+                            type="text"
+                            name="phone"
+                            onChange={changeInput}
+                            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        />
+                    </div>
+                    <div className="mt-3">
+                        <label htmlFor="last-name" className="block text-sm text-right font-medium text-gray-700">
+                            ایمیل
+                        </label>
+                        <input
+                            required
                             type="email"
-                            autoComplete="email"
-                            required
-                            className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            name="email"
+                            onChange={changeInput}
+                            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />
-                        </div>
                     </div>
-
-                    <div>
-                        <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                        رمزعبور
-                        </label>
-                        <div className="mt-1">
-                        <input
-                            id="password"
-                            name="password"
-                            type="password"
-                            autoComplete="current-password"
-                            required
-                            className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        />
-                        </div>
-                    </div>
-
-                    <div className="flex items-center justify-between">
-                        <div className="text-sm">
+                    <div className="text-sm  my-4">
                         <NavLink to="/auth/login" className="font-medium text-indigo-600 hover:text-indigo-500">
                             قبلا عضو شدم, میخوام وارد شم
                         </NavLink>
                         </div>
-                    </div>
 
                     <div>
                         <button
